@@ -6,13 +6,14 @@
     box-sizing: border-box;
     display: none;
     font-size: (@baseFontSize * 0.9);
-    padding: 24px 5px;
+    padding: 24px 8px;
     position: relative;
 
     @media (min-width: @mqBreakpoint) {
         border: 1px solid #000;
         box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
-        display: flex !important;
+        display: block;
+        display: table;
         opacity: 0;
         min-width: 160px;
         position: absolute;
@@ -20,13 +21,16 @@
         visibility: hidden;
         z-index: 100;
 
-        .no-flexboxlegacy & {
-            display: table !important; // Fixes bug in Safari
+        .flexbox &,
+        .flexboxlegacy & {
+            display: flex;
         }
     }
 
     // when the parent `li` is hovered, transition the menu
-    :hover > & {
+    :hover > &,
+    :focus > &,
+    .focus > & {
         .no-js & {
             display: block;
         }
@@ -42,7 +46,7 @@
                 display: flex;
             }
             .no-display-table & {
-	            display: block;
+                display: block;
             }
         }
     }
@@ -54,9 +58,7 @@
 
             .flexbox &,
             .flexboxlegacy & {
-                -webkit-box-flex: 1;
-                // display: block; // Fixes issue in Firefox where mega menus aren't working --- Breaks Safari
-                // float: left; // Fixes issue in Firefox where mega menus aren't working --- Also Breaks Safari
+                -webkit-box-flex: 1; // Old Safari needs this
                 flex: auto;
             }
 
@@ -97,9 +99,11 @@
     }
 
     a {
+        display: block;
         text-decoration: none;
 
-        &:hover {
+        &:hover,
+        &:focus {
             text-decoration: underline;
         }
     }

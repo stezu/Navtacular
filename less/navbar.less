@@ -40,7 +40,6 @@
 
         .flexbox &,
         .flexboxlegacy & {
-            display: block;
             -webkit-box-flex: 1; // for iOS Safari 6
             flex: auto;
         }
@@ -64,9 +63,13 @@
 
     // when the parent is hovered, or when the a is hovered
     :hover > &,
-    &:hover {
+    .focus > &,
+    &:hover,
+    &:focus {
         background-color: #444;
         color: #fff;
+        outline: none;
+        text-decoration: none;
         transition: 100ms;
     }
 
@@ -98,7 +101,8 @@
     cursor: pointer;
     font-size: (@baseFontSize * 1.5);
     line-height: 1.4;
-    margin: 0;
+    margin: 8px 0;
+    padding: 8px 15px;
 
     .icon-reorder:before {
         float: left; // to help with vertical centering...
@@ -121,7 +125,7 @@
     height: 0;
     opacity: 0;
     position: absolute;
-    transition: opacity 350ms, height 0 350ms, width 0 350ms;
+    transition: opacity 400ms, height 0 400ms, width 0 400ms;
     width: 0;
     z-index: 9999;
 
@@ -147,10 +151,10 @@
     box-sizing: border-box;
     left: 0;
     min-height: 100%;
-    min-width: 100%;
     position: absolute;
     -webkit-transition: left 300ms;
     transition: left 300ms;
+    width: 100%; // Keep page from shrinking when mobile menu slides out
 
     .nav-visible & {
         left: 200px;
@@ -165,7 +169,7 @@ html {
     min-height: 100%;
 
     &.nav-visible {
-        overflow-x: hidden;
+        overflow-x: hidden; // Kills animation in Firefox for some reason
     }
 }
 
