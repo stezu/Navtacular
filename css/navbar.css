@@ -205,7 +205,7 @@ html.nav-visible {
     display: -ms-flexbox;
     display: flex;
   }
-  .navtacular-menu .no-display-table {
+  .no-display-table .navtacular-menu {
     display: block;
   }
 }
