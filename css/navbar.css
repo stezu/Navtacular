@@ -1,5 +1,7 @@
 .navtacular {
   font-size: 14px;
+  position: relative;
+  z-index: 100;
 }
 .navtacular ul {
   list-style: none;
@@ -202,6 +204,9 @@ html.nav-visible {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+  }
+  .navtacular-menu .no-display-table {
+    display: block;
   }
 }
 .no-js :hover > .navtacular-menu,

@@ -25,6 +25,9 @@
         .flexboxlegacy & {
             display: flex;
         }
+        .no-display-table {
+            display: block; // fix IE7 bug where -menu doesn't fall below -link
+        }
     }
 
     // when the parent `li` is hovered, transition the menu
