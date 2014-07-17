@@ -54,24 +54,6 @@
         }
     }
 
-    .navtacular-menu-group {
-        @media (min-width: @mqBreakpoint) {
-            display: table-cell;
-            padding: 0 24px;
-
-            .flexbox &,
-            .flexboxlegacy & {
-                -webkit-box-flex: 1; // Old Safari needs this
-                flex: auto;
-            }
-
-            .no-display-table & {
-                float: left;
-                max-width: 33%;
-            }
-        }
-    }
-
     &.mega {
         @media (min-width: @mqBreakpoint) {
             left: 0;
@@ -84,6 +66,27 @@
                 // and the width causes less than desirable situations elsewhere...
                 // (see a theme with a border-radius for details)
                 width: auto;
+            }
+        }
+    }
+
+    &.mega,
+    &.cols {
+        @media (min-width: @mqBreakpoint) {
+            .navtacular-menu-group {
+                display: table-cell;
+                padding: 0 24px;
+
+                .flexbox &,
+                .flexboxlegacy & {
+                    -webkit-box-flex: 1; // Old Safari needs this
+                    flex: auto;
+                }
+
+                .no-display-table & {
+                    float: left;
+                    max-width: 33%;
+                }
             }
         }
     }
