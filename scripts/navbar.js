@@ -30,6 +30,7 @@
                         $navbar.find('.navtacular-menu').slideUp();
                         $menu.slideDown();
                     }
+                    return false;
                 });
             });
         }
