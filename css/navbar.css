@@ -276,6 +276,7 @@ html.nav-visible {
 }
 .navtacular-menu ul {
   color: #777;
+  padding-right: 5px;
 }
 .navtacular-menu ul + h2 {
   margin-top: 10px;
