@@ -42,14 +42,18 @@
             // fix the alignment if it extends beyond the right edge of the navbar
             $navbar.find('.navtacular-menu').not('.mega').each(function () {
                 var $menu = $(this),
-                    menuRight = $menu.offset().left + $menu.outerWidth(); // right edge of the menu
+                    menuRight;
+
+                // Remove class for calculations
+                $menu.parent().removeClass('menu-align-right');
+
+                // Find right edge of the menu
+                menuRight = $menu.offset().left + $menu.outerWidth();
 
                 // If the right edge of the menu extends past the right edge of the navbar...
                 if (menuRight > navbarRight) {
                     // ...add a special class so that our css can align the menu to the right
                     $menu.parent().addClass('menu-align-right');
-                } else {
-                    $menu.parent().removeClass('menu-align-right');
                 }
             });
         }
@@ -79,12 +83,12 @@
                 $menus = $navbar.find('.navtacular-menu'),
                 $navParent;
 
-            // make sure .navbar-label exists
+            // make sure .navtacular-label exists
             if ($navbar.has('.navtacular-label').length === 0) {
                 $navbar.prepend('<h1 class="navtacular-label">Navigation</h1>');
             }
 
-            // make sure .navbar-cover exists
+            // make sure .navtacular-cover exists
             if ($('.navtacular-cover').length === 0) {
                 $navbar.before('<div class="navtacular-cover"></div>');
             }
