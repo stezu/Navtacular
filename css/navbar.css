@@ -521,8 +521,8 @@ html.nav-visible {
             transform-origin: 50% 0%;
     -webkit-transform: rotateX(90deg);
             transform: rotateX(90deg);
-    -webkit-transition: -webkit-transform 300ms;
-            transition: transform 300ms;
+    -webkit-transition: 300ms;
+            transition: 300ms;
   }
 }
 .navtacular-theme-simple .navtacular-menu h2 {
