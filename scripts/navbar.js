@@ -122,13 +122,11 @@
                 });
             });
 
-            handleMobileNav();
-            alignRightMenus();
-
             $(window).on('resize', function () {
                 handleMobileNav();
                 alignRightMenus();
             });
+            $(window).trigger('resize');
         });
     };
 
