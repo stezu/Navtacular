@@ -66,6 +66,9 @@
                 var $menu = $(this),
                     linkWidth = $menu.prev('.navtacular-link').outerWidth();
 
+                // Reset width for calculations
+                $menu.css('width', '');
+
                 // Set the width to the link width if the menu is not as wide
                 if ($menu.outerWidth() < linkWidth) {
                     $menu.outerWidth(linkWidth);
