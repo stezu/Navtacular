@@ -4,14 +4,15 @@
             navParent: $(this).parent() // pass in a selector or a jQuery object
         }, options);
 
-        var $navbar = this,
+        var $window = $(window),
+            $navbar = this,
             dragging = false;
 
-        function handleMobileNav() {
+        function handleMobileNav () {
 
             $('.navtacular-link').off('click.navtacular');
 
-            if ( $(window).width() > 630 ) {
+            if ($window.width() > 630) {
                 return;
             }
 
@@ -35,7 +36,7 @@
             });
         }
 
-        function alignRightMenus() {
+        function alignRightMenus () {
             var navbarRight = $navbar.offset().left + $navbar.outerWidth(); // right edge of the navbar
 
             // For each non-mega menu,
@@ -54,6 +55,20 @@
                 if (menuRight > navbarRight) {
                     // ...add a special class so that our css can align the menu to the right
                     $menu.parent().addClass('menu-align-right');
+                }
+            });
+        }
+
+        function minWidthMenus () {
+            // For each non-mega menu,
+            // ensure that it has a minimum width of the parent link
+            $navbar.find('.navtacular-menu').not('.mega').each(function () {
+                var $menu = $(this),
+                    linkWidth = $menu.prev('.navtacular-link').outerWidth();
+
+                // Set the width to the link width if the menu is not as wide
+                if ($menu.outerWidth() < linkWidth) {
+                    $menu.outerWidth(linkWidth);
                 }
             });
         }
@@ -119,18 +134,18 @@
                 var $self = $(this),
                     $link = $self.find('a');
 
-                $link.focus(function () {
+                $link.on('focus', function () {
                     $self.addClass('focus');
-                }).blur(function () {
+                }).on('blur', function () {
                     $self.removeClass('focus');
                 });
             });
 
-            $(window).on('resize', function () {
+            $window.on('resize', function () {
                 handleMobileNav();
                 alignRightMenus();
-            });
-            $(window).trigger('resize');
+                minWidthMenus();
+            }).trigger('resize');
         });
     };
 
